@@ -106,6 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const card = document.getElementById("card");
 
+// Toggle con click (para móviles)
 card.addEventListener("click", () => {
   card.classList.toggle("clicked");
+});
+
+// En PC: quitar el volteo al salir el mouse
+card.addEventListener("mouseleave", () => {
+  if (window.matchMedia("(hover: hover)").matches) {
+    card.classList.remove("clicked");
+  }
 });
