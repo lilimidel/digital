@@ -344,15 +344,21 @@ body {
     }
 }
 /* Fondo fijo que funciona en iOS */
+.countdown-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .bg-fixed {
-  background: url('./images/FONDOSEDA2.png') center/cover no-repeat;
-  position: fixed;
+  background: url('./images/FONDOSEDA2.png') center/cover no-repeat fixed;
+  position: absolute; /* cambia de fixed a absolute */
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1; /* queda detrás del contenido */
+  height: 100%; /* se ajusta al alto del wrapper */
+  z-index: -1;
 }
+
 
 /* Sección con overlay para contraste */
 .countdown-section {
