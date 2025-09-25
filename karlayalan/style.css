@@ -343,14 +343,31 @@ body {
         font-size: 1rem;
     }
 }
-/* Sección del Contador */
+/* Fondo fijo que funciona en iOS */
+.bg-fixed {
+  background: url('./images/FONDOSEDA2.png') center/cover no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* queda detrás del contenido */
+}
+
+/* Sección con overlay para contraste */
 .countdown-section {
-    background-image: url('./images/header1.jpg');
-    background-size: cover; /* Hace que la imagen cubra toda la sección */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    padding: 5rem 1rem; /* Mantiene el espacio interno de la sección */
-    background-attachment: fixed;
+  position: relative;
+  z-index: 1; /* asegura que quede encima del fondo */
+  padding: 5rem 1rem;
+  text-align: center;
+  color: #fff;
+}
+
+.countdown-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
 .countdown {

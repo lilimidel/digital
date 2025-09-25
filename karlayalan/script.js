@@ -117,3 +117,5 @@ card.addEventListener("mouseleave", () => {
     card.classList.remove("clicked");
   }
 });
+
+
