@@ -119,3 +119,30 @@ card.addEventListener("mouseleave", () => {
 });
 
 
+(function(){
+  const wrapper = document.getElementById('countdownWrapper');
+  if (!wrapper) return;
+
+  const speed = 0.35; 
+  let ticking = false;
+
+  function updateBackground(){
+    const rect = wrapper.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const offset = Math.round(-rect.top * speed);
+      wrapper.style.setProperty('--bg-pos', `${offset}px`);
+    }
+    ticking = false;
+  }
+
+  function onScrollOrResize(){
+    if (!ticking) {
+      window.requestAnimationFrame(updateBackground);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScrollOrResize, { passive: true });
+  window.addEventListener('resize', onScrollOrResize);
+  updateBackground();
+})();

@@ -1,7 +1,7 @@
 :root {
     --color-primary: rgb(110, 124, 99);
     --color-secondary: #a3a3a3;
-    --color-background: #fdfdfd;
+    --color-background: #ffffff;
     --color-card: #f5f5f5;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Roboto', sans-serif;
@@ -343,83 +343,99 @@ body {
         font-size: 1rem;
     }
 }
-/* Fondo fijo que funciona en iOS */
 .countdown-wrapper {
   position: relative;
-  overflow: hidden;
-}
-
-.bg-fixed {
-  background: url('./images/FONDOSEDA2.png') center/cover no-repeat fixed;
-  position: absolute; /* cambia de fixed a absolute */
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%; /* se ajusta al alto del wrapper */
-  z-index: -1;
+  height: 30vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/* Sección con overlay para contraste */
-.countdown-section {
-  position: relative;
-  z-index: 1; /* asegura que quede encima del fondo */
-  padding: 5rem 1rem;
-  text-align: center;
-  color: #fff;
-}
-
-.countdown-section::before {
+.countdown-wrapper::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  background-image: url('./images/FONDOSEDA2.png');
+  background-size: 150% auto;
+  background-position: center var(--bg-pos, 0px);
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+
+  z-index: 0;
 }
 
+.countdown-wrapper > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+/* Contenido del contador */
+.countdown-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+
+/* Contador */
 .countdown {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
 }
 
 .countdown > div {
-    text-align: center;
+  text-align: center;
 }
 
 .digit {
-    width: 70px;
-    height: 90px;
-    background: transparent;
-    font-size: 48px;
-    font-weight: bold;
-    color: var(--color-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--color-primary);
-    border-radius: 12px;
+  width: 70px;
+  height: 90px;
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-primary);
+  border-radius: 12px;
+  background: transparent;
 }
 
 .label {
-    margin-top: 6px;
-    font-size: 12px;
-    text-align: center;
-    color: var(--color-primary);
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--color-primary);
 }
 
 /* Ajustes para pantallas muy pequeñas */
 @media (max-width: 400px) {
-    .digit {
-        width: 50px;
-        height: 70px;
-        font-size: 36px;
-    }
-    .label {
-        font-size: 10px;
-    }
+  .digit {
+    width: 50px;
+    height: 70px;
+    font-size: 36px;
+  }
+  .label {
+    font-size: 10px;
+  }
 }
+
+
 
 
 /* Estilos para el contenedor de la imagen y el botón superpuesto */
@@ -465,7 +481,7 @@ body {
 /* Media Queries para ajustar la posición del botón en pantallas pequeñas, si es necesario */
 @media (max-width: 768px) {
     .image-overlay-button {
-        bottom: 22%; /* Puedes necesitar ajustar esto para móviles */
+        bottom: 15%; /* Puedes necesitar ajustar esto para móviles */
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
         min-width: 130px;
@@ -474,7 +490,7 @@ body {
 
 @media (max-width: 480px) {
     .image-overlay-button {
-        bottom: 21%; /* Otro ajuste para móviles muy pequeños */
+        bottom: 15%; /* Otro ajuste para móviles muy pequeños */
         padding: 0.6rem 1rem;
         font-size: 0.85rem;
         min-width: 110px;
