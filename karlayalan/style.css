@@ -558,3 +558,81 @@ body {
     
   }
 }
+.rsvp-section {
+  max-width: 350px;   /* <-- AQUÍ */
+  margin: 30px auto;
+  padding: 25px;      /* <-- Y AQUÍ */
+  background-image: url('./images/papel2.png'); /* ruta de tu imagen */
+  background-size: cover;      /* ajusta la imagen al contenedor */
+  background-position: center; /* centra la imagen */
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+
+.rsvp-section .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+
+.rsvp-section .section-text {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;                     /* espacio entre inputs */
+}
+
+.rsvp-form label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.question-label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.options-inline-center {
+  display: flex;
+  justify-content: center;       /* centra en horizontal */
+  gap: 30px;                     /* espacio entre Sí / No */
+  margin-bottom: 10px;
+}
+
+.options-inline-center label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.rsvp-form button {
+  background-color: rgb(90, 104, 79);     /* color principal */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;           /* botón redondeado */
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.rsvp-form button:hover {
+  background-color:  rgb(90, 104, 79);     /* hover */
+}
+

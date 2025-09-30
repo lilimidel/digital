@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 audio.pause();
             }
         });
+        
     }
 });
 const card = document.getElementById("card");
@@ -146,3 +147,81 @@ card.addEventListener("mouseleave", () => {
   window.addEventListener('resize', onScrollOrResize);
   updateBackground();
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".rsvp-form");
+  const select = document.getElementById("acompanantes");
+  const hiddenInput = document.getElementById("acompanantesHidden");
+
+  // Mensaje debajo del formulario
+  const mensaje = document.createElement("p");
+  mensaje.style.color = "green";
+  mensaje.style.textAlign = "center";
+  mensaje.style.marginTop = "10px";
+  form.parentNode.appendChild(mensaje);
+
+  // Mapeo de letras a número de acompañantes
+  const letrasAMax = { a:1, b:2, c:3, d:4, e:5, f:6, g:7 };
+  const urlParams = new URLSearchParams(window.location.search);
+  const letra = urlParams.get("akm"); // ejemplo: ?akm=a
+  const maxInvitados = letrasAMax[letra?.toLowerCase()] || 7;
+
+  // Limitar opciones del select según la letra
+  Array.from(select.options).forEach(option => {
+    if (option.value !== "" && parseInt(option.value) > maxInvitados) {
+      option.style.display = "none"; // oculta opciones mayores al máximo
+    }
+  });
+
+  // Actualizar el input hidden cuando se seleccione un valor
+  select.addEventListener("change", () => {
+    hiddenInput.value = select.value;
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // evita recarga de página
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const asistenciaRadios = document.getElementsByName("entry.1782443328");
+    let asistencia = "";
+    for (let radio of asistenciaRadios) {
+      if (radio.checked) {
+        asistencia = radio.value;
+        break;
+      }
+    }
+
+    // Validar número de teléfono (solo dígitos y 10 caracteres)
+    const telefonoPattern = /^\d{10}$/;
+    if (!telefonoPattern.test(telefono)) {
+      alert("Ingresa un número de teléfono válido de 10 dígitos.");
+      return;
+    }
+
+    // Validación de campos requeridos
+    if (!nombre || !asistencia || !select.value) {
+      alert("Por favor llena todos los campos requeridos antes de enviar.");
+      return;
+    }
+
+    hiddenInput.value = select.value;
+
+    // Enviar datos a Google Forms
+    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScq5NnC41Z2084JKUXn9FKa37_SubxvQdQ22w5XWhGvWhJ3Cw/formResponse";
+    const formData = new FormData(form);
+
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData
+    })
+    .then(() => {
+      mensaje.textContent = "¡Gracias! Tu confirmación ha sido enviada.";
+      form.reset();
+    })
+    .catch(() => {
+      mensaje.textContent = "Hubo un error, por favor intenta de nuevo.";
+    });
+  });
+});
