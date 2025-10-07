@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Prueba akm</title>
+  <meta charset="UTF-8">
+  <title>Redirigiendo...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    (function() {
+      // Obtener el parámetro akm de la URL
       const params = new URLSearchParams(window.location.search);
-      const akm = params.get("akm");
-      alert("Valor de akm detectado: " + akm);
-    });
+      const akm = params.get('akm');
+
+      if (akm) {
+        // Guardar en localStorage
+        localStorage.setItem('akm', akm.toLowerCase());
+
+        // Redirigir a la invitación sin parámetros
+        window.location.href = 'index.html';
+      } else {
+        // Si no hay parámetro, redirige directo
+        window.location.href = 'index.html';
+      }
+    })();
   </script>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      padding: 60px;
+      background-color: #faf9f6;
+    }
+  </style>
 </head>
 <body>
-  <h2>Prueba parámetro akm</h2>
+  <h2>Redirigiendo a tu invitación...</h2>
 </body>
 </html>
