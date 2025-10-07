@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Viridiana & Miguel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero con Imagen de Fondo -->
+  <section class="hero" id="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Viridiana & Miguel</h1>
+      <p>¡Nos casamos!</p>
+      <p>30 de noviembre de 2025</p>
+      <button id="scroll-btn">Desliza para ver más</button>
+    </div>
+  </section>
+
+  <!-- Sección Detalles -->
+  <section class="details" id="details">
+    <h2>Detalles del Evento</h2>
+    <p><strong>Hora:</strong> 18:00</p>
+    <p><strong>Lugar:</strong> Jardín de los Sueños, Monterrey</p>
+    <button id="rsvp-btn">Confirmar Asistencia</button>
+    <div id="rsvp-response" class="hidden">
+      <p>¡Gracias por confirmar tu asistencia!</p>
+    </div>
+  </section>
+
+  <!-- Carrusel de Fotos -->
+  <section class="carousel-section">
+    <h2>Galería</h2>
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="img1.jpg" alt="Foto 1">
+        <img src="img2.jpg" alt="Foto 2">
+        <img src="img3.jpg" alt="Foto 3">
+      </div>
+      <button class="carousel-btn prev">&lt;</button>
+      <button class="carousel-btn next">&gt;</button>
+    </div>
+  </section>
+
+  <!-- Libro de Firmas -->
+  <section class="guestbook">
+    <h2>Libro de Firmas</h2>
+    <div id="guestbook-entries">
+      <!-- Mensajes se agregan dinámicamente -->
+    </div>
+  </section>
+
+  <footer>
+    <p>Esperamos compartir este día tan especial contigo 💖</p>
+  </footer>
+
+  <!-- Música opcional -->
+  <audio id="wedding-music" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
