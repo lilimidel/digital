@@ -2,36 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Redirigiendo...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    (function() {
-      // Obtener el parámetro akm de la URL
-      const params = new URLSearchParams(window.location.search);
-      const akm = params.get('akm');
-
-      if (akm) {
-        // Guardar en localStorage
-        localStorage.setItem('akm', akm.toLowerCase());
-
-        // Redirigir a la invitación sin parámetros
-        window.location.href = 'index.html';
-      } else {
-        // Si no hay parámetro, redirige directo
-        window.location.href = 'index.html';
-      }
-    })();
-  </script>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      padding: 60px;
-      background-color: #faf9f6;
-    }
-  </style>
+  <title>Redirigiendo...</title>
 </head>
 <body>
-  <h2>Redirigiendo a tu invitación...</h2>
+<script>
+  // Leer parámetro akm
+  const params = new URLSearchParams(window.location.search);
+  const akm = params.get('akm')?.toLowerCase();
+
+  if (akm) {
+    // Guardar en localStorage
+    localStorage.setItem('akm', akm);
+  }
+
+  // Redirigir a la página principal sin parámetros
+  window.location.href = 'index.html';
+</script>
+<p>Redirigiendo...</p>
 </body>
 </html>
