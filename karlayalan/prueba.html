@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prueba akm</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const akm = params.get("akm");
+      alert("Valor de akm detectado: " + akm);
+    });
+  </script>
+</head>
+<body>
+  <h2>Prueba parámetro akm</h2>
+</body>
+</html>
