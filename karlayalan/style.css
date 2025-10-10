@@ -374,8 +374,7 @@ body {
 /* Pie de página */
 .footer {
     text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
+    padding: 1.3rem;    font-size: 0.7rem;
     color: var(--color-secondary);
 }
 
