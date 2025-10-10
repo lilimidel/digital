@@ -550,17 +550,14 @@ body {
 /* Posiciones específicas de cada botón */
 .button-regalo.efectivo {
   position: absolute;
-  bottom: 47%;
+  bottom: 45%;
   background: transparent;
   color: #5e5e5e;
   font-family: "Times New Roman", serif;
   font-size: .6rem;
   letter-spacing: 1px;
-  text-decoration: underline;
   text-align: center;
   border: none; /* elimina borde si había */
-  user-select: text; /* permite seleccionar texto */
-  cursor: text; /* cambia el cursor para indicar que se puede seleccionar */
 }
 
 
@@ -605,7 +602,7 @@ transform: translate(-50%, 0) scale(1.05);
     padding: 0.7rem 1.3rem;
   }
 
-  .button-regalo.efectivo { bottom: 47%; }
+  .button-regalo.efectivo { bottom: 46%; }
   .button-regalo.amazon { bottom: 26%; }
   .button-regalo.liverpool { bottom: 5%; }
 }
