@@ -57,7 +57,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
 // Leer el JSON público desde GitHub
-fetch("https://raw.githubusercontent.com/lilimidel/digital/main/naylayale/invitados.json")
+fetch("https://raw.githubusercontent.com/lilimidel/data-updates/main/naylayale/invitados.json")
   .then(res => {
     if (!res.ok) throw new Error("No se pudo leer el JSON");
     return res.json();
