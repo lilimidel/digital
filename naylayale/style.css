@@ -112,3 +112,124 @@ button { margin-top: 20px; }
 
 /* Ocultar por defecto */
 .hidden { display: none; }
+
+
+/* ====== SECCIÓN DETALLES ====== */
+.details {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.details h2 {
+  color: #6b4e26;
+  margin-bottom: 20px;
+}
+
+.details button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #6b6b26;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+
+/* ====== SECCIÓN DETALLES ====== */
+.details {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #fff;
+}
+
+.details h2 {
+  color: #6b4e26;
+  margin-bottom: 20px;
+}
+
+.details button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #6b6b26;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* ====== SECCIÓN CELEBRACIÓN ====== */
+.celebracion-section {
+  background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover no-repeat;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.celebracion-card {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 15px;
+  text-align: center;
+  padding: 40px 25px;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Animación del texto */
+.animateText {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #c49b63, #b28451, #6b4e26, #c49b63);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animateText 8s ease-in-out infinite alternate;
+}
+
+@keyframes animateText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+.celebracion-icon {
+  font-size: 2rem;
+  color: #b89a5c;
+  margin: 10px 0;
+}
+
+.celebracion-lugar {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  color: #6b4e26;
+  margin-bottom: 10px;
+}
+
+.celebracion-detalles {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.celebracion-hora {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.celebracion-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #6b6b26;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.celebracion-btn:hover {
+  background-color: #57571e;
+}
