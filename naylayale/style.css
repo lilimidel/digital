@@ -4,7 +4,24 @@ body, html {
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
+  background-color: #e9ebe8;
 }
+
+/* 1️⃣ Anthony Hunter */
+@font-face {
+  font-family: 'Anthony Hunter';
+  src: url('fonts/anthony_hunter/AnthonyHunter.woff2') format('woff2'),
+       url('fonts/anthony_hunter/AnthonyHunter.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Vintage Goods';
+  src: url('fonts/Vintage-Goods-Script/Vintage-Goods-Script/VintageGoods.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 /* Hero modificado */
 .hero {
@@ -22,7 +39,7 @@ body, html {
 .hero .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.3);
 }
 
 .hero-content {
@@ -30,9 +47,17 @@ body, html {
   text-align: center;
   z-index: 2;
   animation: fadeIn 1.5s forwards;
+  padding-top: 90%; /* ajusta la distancia desde arriba */
 }
 
-.hero h1 { font-size: 3em; margin: 0; }
+.hero h1 {
+  font-size: 3.2em;
+  margin: 0;
+  font-family: 'Vintage goods', cursive;
+  font-weight: 50; /* más delgada */
+ 
+
+}
 .hero p { font-size: 1.5em; margin: 10px 0; }
 
 .hero button {
@@ -182,7 +207,7 @@ button { margin-top: 20px; }
   font-family: 'Great Vibes', cursive;
   font-size: 2rem;
   font-weight: bold;
-  background: linear-gradient(90deg, #c49b63, #b28451, #6b4e26, #c49b63);
+  background: linear-gradient(270deg,#9c916b,#323030,#5c5640);
   background-size: 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -232,4 +257,340 @@ button { margin-top: 20px; }
 
 .celebracion-btn:hover {
   background-color: #57571e;
+}
+
+/* Fuente Karla para la fecha */
+.mensaje-inicial .fecha {
+  font-family: 'Karla', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #b60e0e;
+  text-align: center;
+  margin: 0 0 5px 0; /* espacio pequeño debajo de la fecha */
+}
+
+/* Fuente Dancing Script para el título del contador */
+.section-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2em;
+  text-align: center;
+  color: #b02a57;
+  margin: 0 0 15px 0; /* espacio pequeño antes del contador */
+}
+
+/* Ajustes de espacio para la sección completa */
+.countdown-wrapper {
+  padding: 20px;
+}
+.countdown-section {
+  padding: 0; /* ya reducimos espacio arriba y abajo */
+  margin: 0 auto;
+}
+
+/* Contador sigue igual */
+.countdown {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 100px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.time-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.digit {
+  font-size: 36px;
+  font-weight: bold;
+  color: #b02828;
+}
+
+.label {
+  font-size: 14px;
+  font-family: 'Karla', sans-serif; /* puedes mantener Karla o cambiar */
+  color: #3ccb18;
+  margin: 0;
+}
+
+@media (max-width: 500px) {
+  .time-box {
+    width: 60px;
+    height: 80px;
+  }
+  .digit {
+    font-size: 24px;
+  }
+  .label {
+    font-size: 12px;
+  }
+  .mensaje-inicial .fecha {
+    font-size: 16px;
+  }
+  .section-title {
+    font-size: 1.6em;
+  }
+}
+
+/* Separador arriba de la fecha */
+.separator {
+  text-align: center;
+  margin-bottom: 10px; /* espacio debajo del separador */
+}
+
+.separator img {
+  max-width: 150px;  /* ajusta según necesites */
+  width: 50%;        /* responsive */
+  height: auto;
+}
+
+.frase-boda {
+  text-align: center;
+  margin-top: 20px; /* espacio sobre la frase */
+}
+
+.frase-boda p {
+   font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  color: #b02a57; /* color romántico */
+  margin: 20px;
+}
+
+
+/* Contador fin */
+
+.imagen-picuda {
+  position: relative;
+  width: 100%;
+  height: 60vh;       /* sección más larga */
+  max-height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(
+  50% 0%,    /* pico arriba */
+  100% 5%,   /* esquina superior derecha */
+  100% 95%,  /* esquina inferior derecha */
+  50% 100%,  /* pico abajo */
+  0% 95%,    /* esquina inferior izquierda */
+  0% 5%      /* esquina superior izquierda */
+);
+
+}
+
+.imagen-picuda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.imagen-picuda .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2); /* sombreado leve */
+}
+
+
+.seccion-fondo {
+  position: relative;
+  width: 100%;
+  height: 80vh;           /* altura de la sección */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url('./images/tarjeta.png'); /* imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.seccion-fondo .overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+}
+
+.nombres-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  text-align: center;
+}
+
+.nombres-container .nombre {
+  font-family: 'Great Vibes', cursive; /* fuente elegante */
+  font-size: 3rem;
+  color: #fff;
+}
+
+
+/*intinerario */
+
+.itinerario-section {
+  background: #f0efe9;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.itinerario-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #5c5446;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  opacity: 0.3;  /* inicialmente más transparente */
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+/* Envolvemos el círculo en un wrapper */
+.circle-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px; /* ancho igual al círculo */
+}
+
+/* Línea vertical debajo del círculo */
+.circle-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 60px; /* justo debajo del círculo */
+  width: 4px;
+  height: calc(100% - 60px); /* hasta el siguiente círculo */
+  background: #d3cfc6;
+}
+
+.timeline-item:last-child .circle-wrapper::after {
+  display: none; /* no dibujar línea en el último */
+}
+
+.timeline-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #d3cfc6; /* color inicial “invertido” / gris */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s;
+  z-index: 1; /* asegurar que el círculo esté encima de la línea */
+}
+
+.timeline-item.active .circle {
+  background: #8b6b4f; /* color café */
+}
+
+.circle img {
+  width: 30px;
+  height: 30px;
+}
+
+.content h3 {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #3c352a;
+}
+
+.content p {
+  margin: 2px 0 0;
+  font-family: 'Karla', sans-serif;
+  color: #5c5446;
+}
+
+/* Fin itinerario */
+
+
+.invitacion-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background: #fdf6f0;
+  font-family: 'Karla', sans-serif;
+}
+
+.invitacion-card {
+  width: 300px;
+  background: linear-gradient(135deg, #ffe6e0, #ffd2c7);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.invitacion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.invitacion-header {
+  background: #ff8a65;
+  color: white;
+  padding: 20px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+}
+
+.invitacion-body {
+  padding: 20px;
+  color: #5c5446;
+}
+
+.invitacion-body p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.invitacion-body strong {
+  color: #3c352a;
+}
+
+.invitacion-footer {
+  background: #ffb294;
+  color: white;
+  padding: 10px;
+  font-size: 0.9rem;
 }

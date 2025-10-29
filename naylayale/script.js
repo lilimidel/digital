@@ -1,81 +1,153 @@
-// scripts.js
+document.addEventListener('DOMContentLoaded', () => {
 
-// Scroll hacia detalles
-document.getElementById('scroll-btn').addEventListener('click', () => {
-  document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+  // ===== Scroll hacia detalles (si existe el botón) =====
+  const scrollBtn = document.getElementById('scroll-btn');
+  if(scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+      const details = document.getElementById('details');
+      if(details) details.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  // ===== RSVP =====
+  const rsvpBtn = document.getElementById('rsvp-btn');
+  if(rsvpBtn) {
+    rsvpBtn.addEventListener('click', () => {
+      const response = document.getElementById('rsvp-response');
+      if(response) response.classList.remove('hidden');
+      rsvpBtn.disabled = true;
+      rsvpBtn.textContent = 'Confirmado';
+    });
+  }
+
+  // ===== Música =====
+  const music = document.getElementById('wedding-music');
+  if(music) {
+    document.body.addEventListener('click', () => {
+      music.play().catch(() => {});
+    });
+  }
+
+  // ===== Libro de firmas =====
+  const guestbook = document.getElementById('guestbook-entries');
+  if(guestbook) {
+    const sampleEntries = [
+      { nombre: 'Ana', mensaje: '¡Felicidades pareja hermosa!' },
+      { nombre: 'Luis', mensaje: 'Les deseo lo mejor en esta nueva etapa.' }
+    ];
+    sampleEntries.forEach(entry => {
+      const div = document.createElement('div');
+      div.className = 'entry';
+      div.innerHTML = `<strong>${entry.nombre}:</strong> ${entry.mensaje}`;
+      guestbook.appendChild(div);
+    });
+  }
+
+  // ===== Carrusel =====
+  const track = document.querySelector('.carousel-track');
+  const slides = track ? Array.from(track.children) : [];
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  let index = 0;
+
+  function updateCarousel() {
+    if(track) track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  if(nextBtn) nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  });
+
+  if(prevBtn) prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  // ===== Lectura de invitado desde JSON =====
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+
+  fetch("https://raw.githubusercontent.com/lilimidel/data-updates/main/naylayale/invitados.json")
+    .then(res => {
+      if (!res.ok) throw new Error("No se pudo leer el JSON");
+      return res.json();
+    })
+    .then(data => {
+      const invitado = data.find(item => item.id == id);
+      const nombreEl = document.getElementById("nombre");
+      const personasEl = document.getElementById("personas");
+
+      if(invitado) {
+        if(nombreEl) nombreEl.textContent = invitado.nombre;
+        if(personasEl) personasEl.textContent = invitado.personas;
+      } else {
+        if(nombreEl) nombreEl.textContent = "Invitado no encontrado";
+        if(personasEl) personasEl.textContent = "-";
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      const nombreEl = document.getElementById("nombre");
+      const personasEl = document.getElementById("personas");
+      if(nombreEl) nombreEl.textContent = "Error al cargar datos";
+      if(personasEl) personasEl.textContent = "-";
+    });
+
+  // ===== Contador regresivo =====
+  const DATE_TARGET = new Date('2026-10-26T18:00:00');
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+
+  function updateCountdown() {
+    if(!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    const now = new Date();
+    const duration = DATE_TARGET - now;
+
+    if(duration <= 0) {
+      daysEl.textContent = "0";
+      hoursEl.textContent = "00";
+      minutesEl.textContent = "00";
+      secondsEl.textContent = "00";
+      return;
+    }
+
+    const d = Math.floor(duration / (1000*60*60*24));
+    const h = Math.floor((duration / (1000*60*60)) % 24);
+    const m = Math.floor((duration / (1000*60)) % 60);
+    const s = Math.floor((duration / 1000) % 60);
+
+    daysEl.textContent = d;
+    hoursEl.textContent = h.toString().padStart(2,'0');
+    minutesEl.textContent = m.toString().padStart(2,'0');
+    secondsEl.textContent = s.toString().padStart(2,'0');
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
 });
 
-// RSVP
-document.getElementById('rsvp-btn').addEventListener('click', function() {
-  document.getElementById('rsvp-response').classList.remove('hidden');
-  this.disabled = true;
-  this.textContent = 'Confirmado';
-});
 
-// Música
-const music = document.getElementById('wedding-music');
-document.body.addEventListener('click', () => {
-  music.play().catch(() => {});
-});
+//inicio intinerario
+const items = document.querySelectorAll('.timeline-item');
 
-// Libro de firmas de ejemplo
-const guestbook = document.getElementById('guestbook-entries');
-const sampleEntries = [
-  { nombre: 'Ana', mensaje: '¡Felicidades pareja hermosa!' },
-  { nombre: 'Luis', mensaje: 'Les deseo lo mejor en esta nueva etapa.' }
-];
-sampleEntries.forEach(entry => {
-  const div = document.createElement('div');
-  div.className = 'entry';
-  div.innerHTML = `<strong>${entry.nombre}:</strong> ${entry.mensaje}`;
-  guestbook.appendChild(div);
-});
+function checkTimelineItems() {
+  const triggerBottom = window.innerHeight * 0.85;
 
-// Carrusel
-const track = document.querySelector('.carousel-track');
-const slides = Array.from(track.children);
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
-let index = 0;
+  items.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
 
-function updateCarousel() {
-  track.style.transform = `translateX(-${index * 100}%)`;
+    if(itemTop < triggerBottom) {
+      item.classList.add('active');
+    }
+  });
 }
 
-nextBtn.addEventListener('click', () => {
-  index = (index + 1) % slides.length;
-  updateCarousel();
-});
+window.addEventListener('scroll', checkTimelineItems);
+window.addEventListener('load', checkTimelineItems);
 
-prevBtn.addEventListener('click', () => {
-  index = (index - 1 + slides.length) % slides.length;
-  updateCarousel();
-});
-
-// Obtener el parámetro 'id' desde la URL (por ejemplo: ?id=3)
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
-
-// Leer el JSON público desde GitHub
-fetch("https://raw.githubusercontent.com/lilimidel/data-updates/main/naylayale/invitados.json")
-  .then(res => {
-    if (!res.ok) throw new Error("No se pudo leer el JSON");
-    return res.json();
-  })
-  .then(data => {
-    // Buscar el invitado por ID
-    const invitado = data.find(item => item.id == id);
-
-    if (invitado) {
-      document.getElementById("nombre").textContent = invitado.nombre;
-      document.getElementById("personas").textContent = invitado.personas;
-    } else {
-      document.getElementById("nombre").textContent = "Invitado no encontrado";
-      document.getElementById("personas").textContent = "-";
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("nombre").textContent = "Error al cargar datos";
-    document.getElementById("personas").textContent = "-";
-  });
+//fin intinerario

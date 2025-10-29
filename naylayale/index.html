@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nayla y Alejandro</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Feeling+Passionate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+
 </head>
 <body>
 
@@ -12,21 +20,87 @@
   <section class="hero" id="hero">
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>Nayla y Alejandro</h1>
-      <button id="scroll-btn">Desliza para ver más</button>
+      <h1>Nayla & Alejandro</h1>
     </div>
+
   </section>
 
-  <!-- Sección Detalles -->
-  <section class="details" id="details">
-    <h2>13 de Diciembre 2025</h2>
-    <p><strong>Hora:</strong> 18:00</p>
-    <p><strong>Lugar:</strong> Jardín de los Sueños, Monterrey</p>
-    <button id="rsvp-btn">Confirmar Asistencia</button>
-    <div id="rsvp-response" class="hidden">
-      <p>¡Gracias por confirmar tu asistencia!</p>
+<section id="countdownWrapper" class="countdown-wrapper">
+  <div class="countdown-section">
+
+    <!-- Imagen separador arriba -->
+    <div class="separator">
+      <img src="./images/separador1.png" alt="Separador">
     </div>
-  </section>
+
+    <!-- Fecha -->
+    <div class="mensaje-inicial">
+      <h2 class="fecha">13 Diciembre 2025</h2>
+    </div>
+
+    <!-- Título del contador -->
+    <h2 class="section-title">Solo Faltan:</h2>
+
+    <!-- Contador -->
+    <div class="countdown">
+      <div class="time-box">
+        <div class="digit" id="days">0</div>
+        <div class="label">Días</div>
+      </div>
+      <div class="time-box">
+        <div class="digit" id="hours">00</div>
+        <div class="label">Horas</div>
+      </div>
+      <div class="time-box">
+        <div class="digit" id="minutes">00</div>
+        <div class="label">Minutos</div>
+      </div>
+      <div class="time-box">
+        <div class="digit" id="seconds">00</div>
+        <div class="label">Segundos</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Frase de boda abajo -->
+  <div class="frase-boda">
+     <p>Desde el primer momento supe que juntos escribiríamos
+  una historia llena de amor, sueños y aventuras.
+  Hoy celebramos nuestra unión, rodeados de quienes
+  nos aman y nos acompañan en este viaje de la vida,
+  prometiéndonos siempre cuidarnos y crecer juntos.</p>
+  </div>
+
+ <h2 class="section-title">Nayla y Alejandro</h2>
+
+    <!-- Imagen separador abajo -->
+  <div class="separator">
+    <img src="./images/separador1.png" alt="Separador">
+  </div>
+
+</section>
+
+<section class="imagen-picuda">
+  <div class="overlay"></div>
+  <img src="./images/portada.jpg" alt="Imagen decorativa">
+</section>
+
+<section class="seccion-fondo">
+  <!-- Overlay oscuro leve -->
+  <div class="overlay"></div>
+
+  <!-- Nombres de los novios -->
+  <div class="nombres-container">
+    <div class="nombre">Lilieth</div>
+    <div class="nombre">Minor</div>
+    <div class="nombre">&</div>
+    <div class="nombre">Alex</div>
+    <div class="nombre">Gómez</div>
+  </div>
+</section>
+
 
   <!-- ✨ NUEVA SECCIÓN: CELEBRACIÓN ✨ -->
   <section class="celebracion-section" id="celebracion">
@@ -44,20 +118,72 @@
     </div>
   </section>
 
-  <div class="card">
-    <h1>Invitación Especial</h1>
-    <p><strong>Nombre:</strong> <span id="nombre">Cargando...</span></p>
-    <p><strong>Personas permitidas:</strong> <span id="personas">Cargando...</span></p>
+  <section class="itinerario-section">
+  <h2 class="itinerario-title">Itinerario</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="circle"><img src="./images/icon-biblia.png" alt="Conferencia Bíblica"></div>
+      <div class="content">
+        <h3>Conferencia Bíblica</h3>
+        <p>17:00 hrs</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="circle"><img src="./images/icon-recepcion.png" alt="Recepción"></div>
+      <div class="content">
+        <h3>Recepción</h3>
+        <p>17:45 hrs</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="circle"><img src="./images/icon-novios.png" alt="Entrada Novios"></div>
+      <div class="content">
+        <h3>Entrada Novios</h3>
+        <p>18:30 hrs</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="circle"><img src="./images/icon-cena.png" alt="Cena"></div>
+      <div class="content">
+        <h3>Cena</h3>
+        <p>19:00 hrs</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="circle"><img src="./images/icon-fiesta.png" alt="Fiesta"></div>
+      <div class="content">
+        <h3>Fiesta</h3>
+        <p>19:45 hrs - 23:00 hrs</p>
+      </div>
+    </div>
   </div>
+</section>
+
+
+<section class="invitacion-section">
+  <div class="invitacion-card">
+    <div class="invitacion-header">
+      <h2>aqui pondre un sobre y el sello</h2>
+    </div>
+    <div class="invitacion-body">
+      <p><strong>Nombre:</strong> <span id="nombre">Cargando...</span></p>
+      <p><strong>Personas permitidas:</strong> <span id="personas">Cargando...</span></p>
+    </div>
+    <div class="invitacion-footer">
+      <p>🎉 ¡Nos encantará verte! 🎉</p>
+    </div>
+  </div>
+</section>
+
   
   <!-- Carrusel de Fotos -->
   <section class="carousel-section">
     <h2>Galería</h2>
     <div class="carousel">
       <div class="carousel-track">
-        <img src="img1.jpg" alt="Foto 1">
-        <img src="img2.jpg" alt="Foto 2">
-        <img src="img3.jpg" alt="Foto 3">
+        <img src="./images/portada.jpg" alt="Foto 1">
+        <img src="./images/portada.jpg" alt="Foto 2">
+        <img src="./images/portada.jpg" alt="Foto 3">
       </div>
       <button class="carousel-btn prev">&lt;</button>
       <button class="carousel-btn next">&gt;</button>
