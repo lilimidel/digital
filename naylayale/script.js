@@ -200,7 +200,7 @@ window.addEventListener('load', () => {
 /*nombres animados*/
  window.addEventListener("load", function() {
     const elementos = document.querySelectorAll(
-      ".nombres-container .nombre, .nombre-novio, .simbolo, .texto-bendicion, .padres div"
+      ".nombres-container .nombre, .nombre-novio, .simbolo, .texto-bendicion, .padres"
     );
 
     const observer = new IntersectionObserver((entries) => {
@@ -222,30 +222,49 @@ window.addEventListener('load', () => {
   const id = params.get('id');
 
   fetch("https://raw.githubusercontent.com/lilimidel/data-updates/main/naylayale/invitados.json")
-    .then(res => {
-      if (!res.ok) throw new Error("No se pudo leer el JSON");
-      return res.json();
-    })
-    .then(data => {
-      const invitado = data.find(item => item.id == id);
-      const nombreEl = document.getElementById("nombre");
-      const personasEl = document.getElementById("personas");
+  .then(res => res.json())
+  .then(data => {
+    const invitado = data.find(item => item.id == id);
+    const nombreEl = document.getElementById("nombre");
+    const personasEl = document.getElementById("personas");
 
-      if(invitado) {
-        if(nombreEl) nombreEl.textContent = invitado.nombre;
-        if(personasEl) personasEl.textContent = invitado.personas;
-      } else {
-        if(nombreEl) nombreEl.textContent = "Invitado no encontrado";
-        if(personasEl) personasEl.textContent = "-";
+    if (invitado) {
+      if(nombreEl) nombreEl.textContent = invitado.nombre;
+      if(personasEl) personasEl.textContent = invitado.personas;
+
+      // Ajustar máximo de acompañantes basado en pases
+      const select = document.getElementById("acompanantes");
+      const hiddenInput = document.getElementById("acompanantesHidden");
+      const maxInvitados = parseInt(invitado.personas) || 1;
+
+      // Limpiar opciones previas y crear solo hasta max
+      select.innerHTML = "";
+      for (let i = 1; i <= maxInvitados; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        select.appendChild(option);
       }
-    })
-    .catch(err => {
-      console.error(err);
-      const nombreEl = document.getElementById("nombre");
-      const personasEl = document.getElementById("personas");
-      if(nombreEl) nombreEl.textContent = "Error al cargar datos";
+      hiddenInput.value = select.value;
+
+      // Actualizar hidden cuando cambie
+      select.addEventListener("change", () => {
+        hiddenInput.value = select.value;
+      });
+
+    } else {
+      if(nombreEl) nombreEl.textContent = "Invitado no encontrado";
       if(personasEl) personasEl.textContent = "-";
-    });
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    const nombreEl = document.getElementById("nombre");
+    const personasEl = document.getElementById("personas");
+    if(nombreEl) nombreEl.textContent = "Error al cargar datos";
+    if(personasEl) personasEl.textContent = "-";
+  });
+
 
   // ===== Contador regresivo =====
   const DATE_TARGET = new Date('2025-12-13T18:00:00');
@@ -304,3 +323,27 @@ window.addEventListener('scroll', checkTimelineItems);
 window.addEventListener('load', checkTimelineItems);
 
 //fin intinerario
+
+//reservaciones 
+
+
+//fin reservaciones
+
+
+// Activar animación al hacer scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".galeria-item");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+});
+//FIN ANIMACION AL HACER SCROLL

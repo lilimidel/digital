@@ -84,11 +84,7 @@
   <img src="./images/portada.jpg" alt="Imagen decorativa">
 </section>
 
-<section class="seccion-fondo">
-  <!-- Overlay leve opcional -->
-  <div class="overlay"></div>
-
-  <!-- Contenido centrado -->
+<section class="seccion-fondo-estetica">
   <div class="nombres-container">
     <div class="novios">
       <div class="nombre-novio">Nayla Jannely Cantú Guajardo</div>
@@ -99,12 +95,12 @@
     <div class="bendicion">
       <div class="texto-bendicion">Con la bendición de Dios y de nuestros padres</div>
       <div class="padres">
-        <div>Padres de la novia</div>
-        <div>Mario Alberto Cantú Passament</div>
-        <div>Marcedalia Guajardo Guajardo</div>
-        <div>Padres del novio</div>
-        <div>Jesús Alejandro Castillo Flores</div>
-        <div>Ana Patricia Galván González</div>
+         Padres de la novia<br><br>
+        Mario Alberto Cantú Passament <br><br>
+        Marcedalia Guajardo Guajardo<br><br><br>
+        Padres del novio<br><br>
+        Jesús Alejandro Castillo Flores<br><br>
+        Ana Patricia Galván González<br>
       </div>
     </div>
   </div>
@@ -122,7 +118,7 @@
         Veracruz.
       </p>
       <p class="celebracion-hora">Hora: 17:00 hrs</p>
-      <a href="#" class="celebracion-btn">📍 Ubicación</a>
+      <a href="#" class="celebracion-btn">Ver Ubicación</a>
     </div>
   </section>
 
@@ -165,6 +161,77 @@
     <p class="pases-line">
       <strong>PASES ASIGNADOS:</strong> <span id="personas">Cargando...</span>
     </p>
+  </div>
+</section>
+
+
+<section class="rsvp-section" id="confirmacion">
+  <h2 class="section-title">&nbsp;</h2>
+  <p class="section-text">&nbsp;<br>&nbsp;<br>&nbsp;</p>
+
+  <form class="rsvp-form" id="rsvpForm">
+    <!-- Nombre -->
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="entry.692299565" id="nombre" required>
+
+    <!-- Teléfono -->
+    <label for="telefono">Teléfono:</label>
+<input 
+    type="tel" 
+    name="entry.2002604468" 
+    id="telefono" 
+    required 
+    pattern="[0-9]{10}" 
+/>
+
+
+    <!-- Asistencia -->
+    <label class="question-label">¿Asistirás?</label>
+    <div class="options-inline-center">
+      <label>
+        <input type="radio" name="entry.1782443328" value="Sí"> Sí
+      </label>
+      <label>
+        <input type="radio" name="entry.1782443328" value="No"> No
+      </label>
+    </div>
+
+    <!-- Acompañantes -->
+    <label for="acompanantes">Número de confirmados:</label>
+    <select name="acompanantesVisible" id="acompanantes" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <!-- Input oculto que envía el valor real a Google Forms -->
+    <input type="hidden" name="entry.987654321" id="acompanantesHidden">
+
+<!-- Input oculto de Google Forms -->
+<input type="hidden" name="entry.1874152832" id="acompanantesHidden">
+
+
+    <!-- Comentarios -->
+    <label for="comentarios">Comentarios:</label>
+    <textarea name="entry.1572602636" id="comentarios" rows="3"></textarea>
+
+    <button type="submit">Enviar Confirmación</button>
+  </form>
+
+  <p id="mensaje" style="color:green; text-align:center; margin-top:10px;"></p>
+</section>
+
+
+<section class="galeria">
+  <div class="galeria-grid">
+    <div class="galeria-item"><img src="./images/portada.jpg" alt="Imagen 1"></div>
+    <div class="galeria-item"><img src="./images/portada.jpg" alt="Imagen 2"></div>
+    <div class="galeria-item"><img src="./images/portada.jpg" alt="Imagen 3"></div>
+    <div class="galeria-item"><img src="./images/portada.jpg" alt="Imagen 4"></div>
+    <!-- agrega más imágenes según necesites -->
   </div>
 </section>
 
