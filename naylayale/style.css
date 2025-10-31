@@ -235,7 +235,7 @@ button { margin-top: 20px; }
 
 /* ====== SECCIÓN CELEBRACIÓN ====== */
 .celebracion-section {
-  background: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e') center/cover no-repeat;
+  background: url('./images/portada.jpg') center/cover no-repeat;
   padding: 80px 20px;
   display: flex;
   justify-content: center;
@@ -313,7 +313,7 @@ button { margin-top: 20px; }
   font-family: 'Karla', sans-serif;
   font-size: 18px;
   font-weight: 400;
-  color: #b60e0e;
+  color: #4a4a4adc;
   text-align: center;
   margin: 0 0 5px 0; /* espacio pequeño debajo de la fecha */
 }
@@ -323,8 +323,17 @@ button { margin-top: 20px; }
   font-family: 'Dancing Script', cursive;
   font-size: 2.2em;
   text-align: center;
-  color: #b02a57;
-  margin: 0 0 15px 0; /* espacio pequeño antes del contador */
+  color: #95765c;
+  margin: 0 0 15px 0;
+
+  opacity: 0;
+  transform: translateX(100px);
+  transition: transform 2.5s ease-out, opacity 2.5s ease-out;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Ajustes de espacio para la sección completa */
@@ -365,14 +374,14 @@ button { margin-top: 20px; }
 
 .digit {
   font-size: 36px;
-  font-weight: bold;
-  color: #b02828;
+  font-family: 'Karla', sans-serif; /* puedes mantener Karla o cambiar */
+  color: #2d2d2d;
 }
 
 .label {
   font-size: 14px;
-  font-family: 'Karla', sans-serif; /* puedes mantener Karla o cambiar */
-  color: #3ccb18;
+  font-family: 'Dancing Script', cursive;
+  color: #6d6d6d;
   margin: 0;
 }
 
@@ -406,22 +415,35 @@ button { margin-top: 20px; }
   width: 50%;        /* responsive */
   height: auto;
 }
-
-.frase-boda {
-  text-align: center;
-  margin-top: 20px; /* espacio sobre la frase */
-}
-
-.frase-boda p {
-   font-family: 'Jost', sans-serif;
-  font-size: 1rem;
-  color: #b02a57; /* color romántico */
-  margin: 20px;
-}
-
-
 /* Contador fin */
+/*frase de boda */
+.frase-boda {
+    text-align: center;
+    margin-top: 20px;
+  }
 
+  .frase-boda p {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    color: #3c3c38c5;
+    margin: 20px;
+    display: inline-block;
+    white-space: pre-line; /* respeta los saltos */
+    line-height: 1.5;
+  }
+
+  /* Cursor parpadeante */
+  #fraseBoda::after {
+    content: '|';
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+/*fin frase boda */
+  /* Cursor parpadeante */
 .imagen-picuda {
   position: relative;
   width: 100%;
@@ -456,47 +478,121 @@ button { margin-top: 20px; }
 }
 
 
+/* ----- SECCIÓN DE FONDO ----- */
 .seccion-fondo {
   position: relative;
   width: 100%;
-  height: 80vh;           /* altura de la sección */
+  min-height: 100vh;           /* ocupa toda la pantalla */
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;      /* permite padding superior */
+  align-items: center;         /* centra horizontalmente */
+  justify-content: flex-start; /* empieza desde arriba */
   overflow: hidden;
-  background-image: url('./images/tarjeta.png'); /* imagen de fondo */
-  background-size: cover;
-  background-position: center;
+  background-image: url('./images/tarjeta.png');
+  background-size: contain;     /* se ve toda la imagen sin recorte */
+  background-position: center;  /* centra la imagen */
   background-repeat: no-repeat;
+  text-align: center;
+  padding: 60px 20px 20px 20px; /* espacio arriba y algo de abajo */
 }
 
+/* Responsivo para celular */
+@media (max-width: 768px) {
+  .seccion-fondo {
+    padding: 30px 10px 10px 10px; /* menor padding superior en celular */
+    background-size: contain;      /* asegura que la imagen se vea completa */
+  }
+}
+
+
+
+/* Overlay leve opcional para resaltar texto */
 .seccion-fondo .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: 1;
+  /* background-color: rgba(0,0,0,0.1);  si quieres leve oscuridad */
 }
 
-
-.seccion-fondo-pases {
+/* ----- CONTENEDOR GENERAL ----- */
+.nombres-container {
   position: relative;
-  width: 100%;
-  height: 50vh;                 /* altura de la sección */
+  z-index: 2; /* para que esté sobre el overlay */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-image: url('./images/pases.png'); /* imagen de fondo */
-  background-size: contain;       /* la imagen completa, sin recortar */
-  background-position: center;    /* centrada */
-  background-repeat: no-repeat;   /* no se repite */
+  text-align: center;
+  gap: 10px;
+  color: #fff;
 }
 
-.seccion-fondo-pases .overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1;
+/* ----- NOVIOS ----- */
+.nombre-novio {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  line-height: 1.3;
 }
 
+.simbolo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  margin: 10px 0;
+  color: #705c43;
+}
+
+/* ----- FRASE Y PADRES ----- */
+.bendicion {
+  margin-top: 25px;
+  font-family: 'Jost', sans-serif;
+  color: #3c3c38c5;
+}
+
+.texto-bendicion {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.padres div {
+  font-size: 0.9rem;
+  margin: 2px 0;
+}
+
+/* ----- ANIMACIÓN FADE-IN ----- */
+.nombres-container .nombre,
+.nombre-novio,
+.simbolo,
+.texto-bendicion,
+.padres div {
+  opacity: 0;
+  transform: translateY(30px); /* se desplaza desde abajo */
+  transition: all 1.5s ease-out;
+}
+
+.visible-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+  .nombre-novio {
+    font-size: 1.6rem;
+  }
+  .simbolo {
+    font-size: 2rem;
+  }
+  .texto-bendicion {
+    font-size: 0.9rem;
+  }
+  .padres div {
+    font-size: 0.8rem;
+  }
+  .seccion-fondo {
+    min-height: auto;
+    padding: 40px 15px;
+  }
+}
 .nombres-container {
   position: relative;
   z-index: 2; /* para que esté sobre el overlay */
@@ -528,6 +624,23 @@ button { margin-top: 20px; }
   color: #fff;
 }
 
+/* Animación de fade-in desde abajo */
+.nombres-container .nombre,
+.nombre-novio,
+.simbolo,
+.texto-bendicion,
+.padres div {
+  opacity: 0;
+  transform: translateY(30px); /* se desplaza desde abajo */
+  transition: all 1.5s ease-out;
+}
+
+/* Clase que se activa al entrar en viewport */
+.visible-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+/*fin nombres*/
 
 /*intinerario */
 
@@ -544,6 +657,9 @@ button { margin-top: 20px; }
   font-size: 2rem;
   margin-bottom: 40px;
   color: #5c5446;
+
+  font-weight: 300;        /* más delgada */
+  letter-spacing: 2px;     /* separa un poco las letras */
 }
 
 .timeline {
@@ -591,29 +707,32 @@ button { margin-top: 20px; }
 }
 
 .circle {
-  width: 60px;
-  height: 60px;
+  width: 80px;   /* círculo más grande */
+  height: 80px;
   border-radius: 50%;
-  background: #d3cfc6; /* color inicial “invertido” / gris */
+  background: #d3cfc6;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.6s;
-  z-index: 1; /* asegurar que el círculo esté encima de la línea */
+  z-index: 1;
 }
 
+
 .timeline-item.active .circle {
-  background: #8b6b4f; /* color café */
+  background: #95765c; /* color café */
 }
 
 .circle img {
-  width: 30px;
-  height: 30px;
+  width: 60%;    /* proporcional al círculo */
+  height: 60%;
+  object-fit: contain;
+  display: block;
 }
 
 .content h3 {
   font-family: 'Karla', sans-serif;
-  font-size: 1.2rem;
+  font-size: .9rem;
   margin: 0;
   color: #3c352a;
 }
@@ -625,61 +744,70 @@ button { margin-top: 20px; }
 }
 
 /* Fin itinerario */
+.invitacion-card {
+  width: 100%;           
+  max-width: 600px;      
+  aspect-ratio: 2000 / 1156;
 
-
-.invitacion-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start; /* texto arriba */
   align-items: center;
-  padding: 50px 20px;
-  background: #fdf6f0;
-  font-family: 'Karla', sans-serif;
+  color: #3c352a;
+
+  /* Imagen de fondo visible completa */
+  background: url('./images/pases.png') center/contain no-repeat;
+  background-size: contain;
+  box-sizing: border-box;
+  padding-top: 80px; /* sube o baja el texto, antes estaba en 20px */
 }
 
-.invitacion-card {
-  width: 300px;
-  /* Fondo con imagen y degradado */
-  background: 
-    linear-gradient(135deg, rgba(255,230,224,0.7), rgba(255,210,199,0.7)),
-    url('./images/pases.png') center/cover no-repeat;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+.invitacion-card p {
+  margin: 10px 0;
   text-align: center;
 }
 
-
-.invitacion-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.invitacion-header {
-  background: #ff8a65;
-  color: white;
-  padding: 20px;
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.8rem;
-}
-
-.invitacion-body {
-  padding: 20px;
-  color: #5c5446;
-}
-
-.invitacion-body p {
-  font-size: 1.1rem;
-  margin: 10px 0;
-}
-
-.invitacion-body strong {
+/* Nombre del invitado */
+#nombre {
+  font-family: 'Great Vibes', cursive; /* fuente elegante */
+  font-size: 2rem;
   color: #3c352a;
 }
 
-.invitacion-footer {
-  background: #ffb294;
-  color: white;
-  padding: 10px;
-  font-size: 0.9rem;
+/* Contenedor de PASES ASIGNADOS y número de personas */
+.pases-line {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;
+  gap: 10px; /* espacio entre el texto y el número */
+  margin-top: 10px;
 }
+
+/* Texto “PASES ASIGNADOS:” */
+.pases-line strong {
+  font-family: 'Karla', sans-serif; /* fuente Karla */
+  font-size: 0.9rem;
+  font-weight: 300;       /* más delgada */
+  letter-spacing: 2px;    /* espacio entre letras */
+  color: #7b7874;
+}
+
+
+/* Número de personas */
+.pases-line span {
+  font-family: 'Josefin Sans', sans-serif; /* fuente Josefin Sans */
+  font-size: 1.5rem;
+  color: #61615f;
+}
+/* RESPONSIVE para celulares */
+@media (max-width: 480px) {
+  .invitacion-card {
+    max-width: 100%;
+    padding-top: 90px; /* ajusta proporcionalmente en móviles */
+  }
+
+  .invitacion-card p {
+    font-size: 1rem;
+  }
+}
+

@@ -111,9 +111,111 @@ function prevSlide() {
 
 updateSlides();
 
+//inicio frase boda
+ window.addEventListener("load", function() {
+    const texto = `Desde el primer momento supe que juntos escribiríamos
+una historia llena de amor, sueños y aventuras.
+Hoy celebramos nuestra unión, rodeados de quienes
+nos aman y nos acompañan en este viaje de la vida,
+prometiéndonos siempre cuidarnos y crecer juntos.`;
 
+    const elemento = document.getElementById("fraseBoda");
+    let i = 0;
+    let escribiendo = false;
 
+    function escribir() {
+      if (i < texto.length) {
+        const caracter = texto[i] === "\n" ? "<br>" : texto[i];
+        elemento.innerHTML += caracter;
+        i++;
+        setTimeout(escribir, 45);
+      } else {
+        elemento.style.setProperty("animation", "none"); // opcional: detiene cursor
+      }
+    }
 
+    // Observador para iniciar cuando el elemento esté visible
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !escribiendo) {
+          escribiendo = true;
+          escribir();
+        }
+      });
+    }, { threshold: 0.2 }); // empieza al estar 20% visible
+
+    observer.observe(elemento);
+  });
+//fin frase boda
+
+//inicio titulo animado
+window.addEventListener('load', () => {
+    // Selecciona todos los elementos que quieras animar con scroll
+    const targets = Array.from(document.querySelectorAll('.animate-on-scroll'));
+
+    if (targets.length === 0) return;
+
+    // Opciones del observer: rootMargin adelanta/atrasa la activación
+    const options = {
+      root: null, // si tu elemento está dentro de un contenedor con scroll, sustituye null por ese elemento (ver nota abajo)
+      rootMargin: '0px 0px -10% 0px', // activa un poco antes de que esté totalmente centrado
+      threshold: 0.15 // con 15% visible empezará la animación
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target); // desactivamos la observación para que no vuelva a dispararse
+        }
+      });
+    }, options);
+
+    // Observa cada elemento y además dispara la animación si ya está en pantalla
+    targets.forEach(el => {
+      // seguridad: si el elemento ya tiene visible (por algún motivo), lo ponemos visible
+      if (isElementInViewport(el)) {
+        el.classList.add('visible');
+        return;
+      }
+      observer.observe(el);
+    });
+
+    // Helper: detecta si ya está visible en el viewport (fallback)
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom > 0 &&
+        rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+        rect.right > 0
+      );
+    }
+
+    // DEBUG opcion (descomenta si quieres probar)
+    // console.log('Animables detectadas:', targets.length);
+  });
+//fin titulo animado
+
+/*nombres animados*/
+ window.addEventListener("load", function() {
+    const elementos = document.querySelectorAll(
+      ".nombres-container .nombre, .nombre-novio, .simbolo, .texto-bendicion, .padres div"
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible-scroll"); // entra
+        } else {
+          entry.target.classList.remove("visible-scroll"); // sale y se reinicia
+        }
+      });
+    }, { threshold: 0.2 });
+
+    elementos.forEach(el => observer.observe(el));
+  });
+/*fin nombres animados*/
 
   // ===== Lectura de invitado desde JSON =====
   const params = new URLSearchParams(window.location.search);
@@ -146,7 +248,7 @@ updateSlides();
     });
 
   // ===== Contador regresivo =====
-  const DATE_TARGET = new Date('2026-10-26T18:00:00');
+  const DATE_TARGET = new Date('2025-12-13T18:00:00');
   const daysEl = document.getElementById("days");
   const hoursEl = document.getElementById("hours");
   const minutesEl = document.getElementById("minutes");
