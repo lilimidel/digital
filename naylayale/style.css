@@ -29,7 +29,7 @@ body, html {
   position: relative;
   height: 70vh; /* menos alto que 100vh */
   max-height: 600px; /* opcional para pantallas grandes */
-  background: url('./images/portada.jpg') center/cover no-repeat;
+  background: url('./images/STD-4714.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,12 +235,22 @@ button { margin-top: 20px; }
 
 /* ====== SECCIÓN CELEBRACIÓN ====== */
 .celebracion-section {
-  background: url('./images/portada.jpg') center/cover no-repeat;
+  background: url('./images/std-4180.jpg') center/cover no-repeat;
   padding: 80px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.celebracion-sectionrec {
+  background: url('./images/STD-4418.jpg') center/cover no-repeat;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 
 .celebracion-card {
   background-color: rgba(255, 255, 255, 0.611);
@@ -285,14 +295,14 @@ button { margin-top: 20px; }
 .celebracion-detalles {
   font-size: .8rem;
   line-height: 1.6;
-  font-family: Josefin Sans, sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 .celebracion-hora {
   margin-top: 10px;
   font-weight: bold;
-  font-size: .7rem;
-  font-family: Josefin Sans, sans-serif;
+  font-size: .8rem;
+  font-family: Jost, sans-serif;
 }
 
 .celebracion-btn {
@@ -305,6 +315,7 @@ button { margin-top: 20px; }
   text-decoration: none;
   font-weight: 500;
   transition: background 0.3s;
+  font-family: jost, sans-serif;
 }
 
 .celebracion-btn:hover {
@@ -651,7 +662,7 @@ button { margin-top: 20px; }
 /*intinerario */
 
 .itinerario-section {
-  background: #f0efe9;
+  background-color: #e9ebe8;
   padding: 50px 20px;
   display: flex;
   flex-direction: column;
@@ -660,7 +671,7 @@ button { margin-top: 20px; }
 
 .itinerario-title {
   font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 40px;
   color: #5c5446;
 
@@ -713,8 +724,8 @@ button { margin-top: 20px; }
 }
 
 .circle {
-  width: 60px;   /* círculo más grande */
-  height: 60px;
+  width: 80px;   /* círculo más grande */
+  height: 80px;
   border-radius: 50%;
   background: #d3cfc6;
   display: flex;
@@ -738,8 +749,8 @@ button { margin-top: 20px; }
 
 .content h3 {
   font-family: 'Karla', sans-serif;
-  font-size: .9rem;
-  margin: 0;
+  font-size: 1.2rem;
+  margin: 15px 0 5px;
   color: #3c352a;
 }
 
@@ -747,6 +758,7 @@ button { margin-top: 20px; }
   margin: 2px 0 0;
   font-family: 'Karla', sans-serif;
   color: #5c5446;
+  font-size: 1.2rem;
 }
 
 /* Fin itinerario */
@@ -862,6 +874,7 @@ button { margin-top: 20px; }
   font-weight: 600;
   text-align: left;
   font-size: 0.9rem;
+    font-family: JOST, sans-serif;
 }
 
 .rsvp-form input,
@@ -871,6 +884,7 @@ button { margin-top: 20px; }
   border-radius: 10px;
   border: 1px solid #b0afaa;
   font-size: 0.85rem;
+
 }
 
 .question-label {
@@ -931,7 +945,7 @@ button { margin-top: 20px; }
 /* Sección de galería */
 .galeria {
   padding: 60px 20px;
-  background-color: #f7f5f0;
+  background-color: #e9ebe8;
   text-align: center;
 }
 

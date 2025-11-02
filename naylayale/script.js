@@ -113,11 +113,7 @@ updateSlides();
 
 //inicio frase boda
  window.addEventListener("load", function() {
-    const texto = `Desde el primer momento supe que juntos escribiríamos
-una historia llena de amor, sueños y aventuras.
-Hoy celebramos nuestra unión, rodeados de quienes
-nos aman y nos acompañan en este viaje de la vida,
-prometiéndonos siempre cuidarnos y crecer juntos.`;
+    const texto = `Dos caminos se unen, dos almas se encuentran, y comienza una nueva historia de amor. Queremos compartir contigo este día tan especial.`;
 
     const elemento = document.getElementById("fraseBoda");
     let i = 0;
