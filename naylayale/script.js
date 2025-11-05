@@ -21,12 +21,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===== Música =====
-  const music = document.getElementById('wedding-music');
-  if(music) {
-    document.body.addEventListener('click', () => {
-      music.play().catch(() => {});
-    });
+const audio = document.getElementById('wedding-song');
+const floatingPlayer = document.getElementById('floating-music-player');
+const playButton = document.getElementById('play-pause-button');
+
+if (audio && playButton && floatingPlayer) {
+  const playIcon = document.createElement('i');
+  playIcon.classList.add('fas', 'fa-play');
+  const pauseIcon = document.createElement('i');
+  pauseIcon.classList.add('fas', 'fa-pause');
+
+  function updateButtonIcon(isPaused) {
+    playButton.innerHTML = '';
+    playButton.appendChild(isPaused ? playIcon : pauseIcon);
   }
+
+  updateButtonIcon(true);
+
+  audio.addEventListener('play', () => {
+    floatingPlayer.classList.add('pulsing');
+    updateButtonIcon(false);
+  });
+
+  audio.addEventListener('pause', () => {
+    floatingPlayer.classList.remove('pulsing');
+    updateButtonIcon(true);
+  });
+
+  playButton.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play().catch(err => console.log('⚠️ Error al reproducir:', err));
+    } else {
+      audio.pause();
+    }
+  });
+}
+
 
   // ===== Libro de firmas =====
   const guestbook = document.getElementById('guestbook-entries');
