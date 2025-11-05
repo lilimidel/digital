@@ -52,9 +52,9 @@ body, html {
 }
 
 .hero h1 {
-  font-size: 3.2em;
+  font-size: 3.6em;
   margin: 0;
-  font-family: 'Vintage goods', cursive;
+  font-family: 'Dancing Script', cursive;
   font-weight: 50; /* más delgada */
  
 
@@ -256,9 +256,17 @@ button { margin-top: 20px; }
 .celebracion-card {
   background-color: rgba(255, 255, 255, 0.611);
   text-align: center;
-  padding: 40px 50px;
+   padding: 10px 50px 40px 50px; 
   max-width: 400px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.celebracion-icon-img {
+  width: 70px;   /* ajusta al tamaño que quieras */
+  height: 70px;  /* mantiene proporción si quieres igual ancho y alto */
+  margin: 10px 0; /* espacio arriba y abajo */
+  object-fit: contain; /* para que la imagen no se deforme */
+  opacity: 0.5;
 }
 
 /* Animación del texto */
@@ -272,6 +280,8 @@ button { margin-top: 20px; }
   -webkit-text-fill-color: transparent;
   animation: animateText 8s ease-in-out infinite alternate;
   letter-spacing: 3px; /* aumenta o disminuye según lo que quieras */
+   margin-top: 0;
+   margin-bottom: 40px;
 }
 
 @keyframes animateText {
@@ -533,6 +543,34 @@ button { margin-top: 20px; }
     25%, 75% { opacity: 0; }
   }
 /*fin frase boda */
+
+/*frase de boda final*/
+.frase-boda-final {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .frase-boda-final p {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.3rem;
+    color: #3c3c38c5;
+    margin: 20px;
+    display: inline-block;
+    white-space: pre-line; /* respeta los saltos */
+    line-height: 1.5;
+  }
+
+  /* Cursor parpadeante */
+  #frase-boda-final::after {
+    content: '|';
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+/*fin frase boda final */
   /* Cursor parpadeante */
 .imagen-picuda {
   position: relative;
@@ -839,35 +877,36 @@ button { margin-top: 20px; }
 
 /* Fin itinerario */
 .invitacion-card {
-  width: 100vw;  /* ocupa todo el ancho de la pantalla */
-  height: auto;  /* altura proporcional */
-  aspect-ratio: 2000 / 1156; /* mantiene proporción */
+  width: 100vw;
+  min-height: 400px; /* altura mínima para que se vea más grande */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   color: #3c352a;
 
-  /* Imagen de fondo */
-  background: url('./images/pases.png') center/contain no-repeat;
-  background-size: contain;
+  /* Imagen un poco más ancha y centrada verticalmente */
+  background: url('./images/pases2.png') center/110% auto no-repeat;
 
   box-sizing: border-box;
-  padding-top: 80px;
-  margin: 0; /* elimina margen que pueda generar scroll */
-  overflow: hidden; /* evita scroll lateral */
+  padding-top: 100px; /* aumenta el espacio superior */
+  margin: 0;
+  overflow: hidden;
 }
 
 /* En móviles */
 @media (max-width: 480px) {
   .invitacion-card {
-    width: 100vw; /* ancho completo */
+    min-height: 350px;
     padding-top: 90px;
+    background-size: 120% auto; 
   }
 }
+
 .invitacion-card p {
   margin: 10px 0;
   text-align: center;
+  margin-bottom: 0;   /* elimina margen debajo */
 }
 
 /* Nombre del invitado */
@@ -906,7 +945,7 @@ button { margin-top: 20px; }
 @media (max-width: 480px) {
   .invitacion-card {
     max-width: 100%;
-    padding-top: 90px; /* ajusta proporcionalmente en móviles */
+    padding-top: 150px; /* ajusta proporcionalmente en móviles */
   }
 
   .invitacion-card p {
@@ -1166,7 +1205,7 @@ button { margin-top: 20px; }
 
 .noninos .tipo {
   font-family: 'Karla', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #9c916b;
   font-style: italic;
   font-weight: 400;
@@ -1263,7 +1302,7 @@ button { margin-top: 20px; }
 
   .button-regalo.efectivo { bottom: 46%; }
   .button-regalo.amazon { bottom: 27%; }
-  .button-regalo.liverpool { bottom: 7%; }
+  .button-regalo.liverpool { bottom: 13%; }
 }
 
 @media (min-width: 1024px) {
@@ -1363,3 +1402,37 @@ button { margin-top: 20px; }
 
 
 /*fin musica de fondo */
+
+
+.button-vestimenta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #6b6b26;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+  font-family: jost, sans-serif;
+}
+
+.button-vestimenta:hover {
+  background-color: #57571e;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .button-vestimenta {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.3rem;
+    bottom: 13%;
+  }
+}
+
+/* Pie de página */
+.footer {
+    text-align: center;
+    padding: 1.3rem;    font-size: 0.7rem;
+    color: var(--color-secondary);
+}

@@ -174,6 +174,8 @@ startAutoplay();
       }
     }
 
+    
+
     // Observador para iniciar cuando el elemento esté visible
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -187,6 +189,41 @@ startAutoplay();
     observer.observe(elemento);
   });
 //fin frase boda
+
+//inicio frase boda final
+ window.addEventListener("load", function() {
+    const texto = `Nos encantaría contar con tu presencia para celebrar juntos este día lleno de amor, alegría y momentos inolvidables`;
+
+    const elemento = document.getElementById("frase-boda-final");
+    let i = 0;
+    let escribiendo = false;
+
+    function escribir() {
+      if (i < texto.length) {
+        const caracter = texto[i] === "\n" ? "<br>" : texto[i];
+        elemento.innerHTML += caracter;
+        i++;
+        setTimeout(escribir, 45);
+      } else {
+        elemento.style.setProperty("animation", "none"); // opcional: detiene cursor
+      }
+    }
+
+    
+
+    // Observador para iniciar cuando el elemento esté visible
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !escribiendo) {
+          escribiendo = true;
+          escribir();
+        }
+      });
+    }, { threshold: 0.2 }); // empieza al estar 20% visible
+
+    observer.observe(elemento);
+  });
+//fin frase boda final
 
 //inicio titulo animado
 window.addEventListener('load', () => {
@@ -387,3 +424,39 @@ document.addEventListener("DOMContentLoaded", () => {
   items.forEach(item => observer.observe(item));
 });
 //FIN ANIMACION AL HACER SCROLL
+
+
+  // --- Enviar formulario ---
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const telefono = document.getElementById("telefono").value.trim();
+    const asistenciaRadios = document.getElementsByName("entry.1782443328");
+    let asistencia = "";
+    for (let radio of asistenciaRadios) if (radio.checked) { asistencia = radio.value; break; }
+
+    if (!nombre || !telefono || !asistencia || !select.value) {
+      alert("Por favor llena todos los campos antes de enviar.");
+      return;
+    }
+    if (!/^\d{10}$/.test(telefono)) {
+      alert("Ingresa un número de teléfono válido de 10 dígitos.");
+      return;
+    }
+
+    hiddenInput.value = select.value;
+
+    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScq5NnC41Z2084JKUXn9FKa37_SubxvQdQ22w5XWhGvWhJ3Cw/formResponse";
+    const formData = new FormData(form);
+
+    fetch(url, { method: "POST", mode: "no-cors", body: formData })
+      .then(() => {
+        mensaje.textContent = "¡Gracias! Tu confirmación ha sido enviada.";
+        form.reset();
+      })
+      .catch(() => {
+        mensaje.textContent = "Hubo un error, por favor intenta de nuevo.";
+      });
+  });
+
