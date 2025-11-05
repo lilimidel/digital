@@ -235,7 +235,7 @@ button { margin-top: 20px; }
 
 /* ====== SECCIÓN CELEBRACIÓN ====== */
 .celebracion-section {
-  background: url('./images/std-4180.jpg') center/cover no-repeat;
+  background: url('./images/STD-4180.jpg') center/cover no-repeat;
   padding: 80px 20px;
   display: flex;
   justify-content: center;
@@ -321,6 +321,81 @@ button { margin-top: 20px; }
 .celebracion-btn:hover {
   background-color: #57571e;
 }
+
+
+
+
+.celebracion-cardrec {
+  background-color: rgba(255, 255, 255, 0.611);
+  text-align: center;
+  padding: 40px 50px;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Animación del texto */
+.animateTextrec {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(270deg,#9c916b, #b98604, #5c5640, #9c916b);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animateText 8s ease-in-out infinite alternate;
+  letter-spacing: 3px; /* aumenta o disminuye según lo que quieras */
+}
+
+@keyframes animateText {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+.celebracion-iconrec {
+  font-size: 2rem;
+  color: #b89a5c;
+  margin: 10px 0;
+}
+
+.celebracion-lugarrec {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  color: #6b4e26;
+  margin-bottom: 10px;
+}
+
+.celebracion-detallesrec {
+  font-size: .8rem;
+  line-height: 1.6;
+  font-family: 'Jost', sans-serif;
+}
+
+.celebracion-horarec {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: .8rem;
+  font-family: Jost, sans-serif;
+}
+
+.celebracion-btnrec {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #6b6b26;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+  font-family: jost, sans-serif;
+}
+
+.celebracion-btnrec:hover {
+  background-color: #57571e;
+}
+
+
 
 /* Fuente Karla para la fecha */
 .mensaje-inicial .fecha {
