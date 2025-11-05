@@ -111,7 +111,7 @@ function prevSlide() {
 
 /* ===== Autoplay ===== */
 function startAutoplay() {
-  autoplayInterval = setInterval(nextSlide, 4000); // cada 4 segundos
+  autoplayInterval = setInterval(nextSlide, 2000); // cada 2 segundos
 }
 
 function resetAutoplay() {

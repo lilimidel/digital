@@ -152,15 +152,16 @@ button { margin-top: 20px; }
 }
 
 .carousel-indicators button {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  width: 12px;      /* tamaño exacto */
+  height: 12px;     /* mismo que width */
+  border-radius: 50%; /* hace el círculo perfecto */
   border: none;
   background: #ccc;
   cursor: pointer;
+  flex-shrink: 0;    /* evita que se reduzcan si el espacio es pequeño */
   transition: background 0.3s ease, transform 0.3s ease;
-  flex-shrink: 0; /* evita que se deformen */
 }
+
 
 .carousel-indicators button.active {
   background: #6a5b1e;
