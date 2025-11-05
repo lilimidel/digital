@@ -77,28 +77,49 @@ if (audio && playButton && floatingPlayer) {
 const slides = Array.from(document.querySelectorAll('.carousel-slide'));
 const indicatorsContainer = document.querySelector('.carousel-indicators');
 let index = 0;
+let autoplayInterval;
 
 slides.forEach((_, i) => {
   const dot = document.createElement('button');
   if (i === 0) dot.classList.add('active');
   indicatorsContainer.appendChild(dot);
-  dot.addEventListener('click', () => goToSlide(i));
+  dot.addEventListener('click', () => goToSlide(i, true)); // true = pausa autoplay
 });
+
 const indicators = Array.from(indicatorsContainer.children);
 
 function updateSlides() {
-  slides.forEach((slide, i) => {
-    slide.classList.remove('active');
-    if (i === index) slide.classList.add('active');
-  });
+  slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
   indicators.forEach((dot, i) => dot.classList.toggle('active', i === index));
 }
 
-function goToSlide(newIndex) {
+function goToSlide(newIndex, stopAuto = false) {
   index = newIndex;
+  updateSlides();
+  if (stopAuto) resetAutoplay();
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
   updateSlides();
 }
 
+function prevSlide() {
+  index = (index - 1 + slides.length) % slides.length;
+  updateSlides();
+}
+
+/* ===== Autoplay ===== */
+function startAutoplay() {
+  autoplayInterval = setInterval(nextSlide, 4000); // cada 4 segundos
+}
+
+function resetAutoplay() {
+  clearInterval(autoplayInterval);
+  startAutoplay();
+}
+
+/* ===== Control táctil ===== */
 let startX = 0;
 let isDragging = false;
 const threshold = 30;
@@ -116,6 +137,7 @@ slides.forEach(slide => {
 function startDrag(e) {
   isDragging = true;
   startX = e.pageX || e.touches[0].pageX;
+  clearInterval(autoplayInterval); // pausa mientras arrastra
 }
 
 function moveDrag(e) {
@@ -123,23 +145,15 @@ function moveDrag(e) {
   const currentX = e.pageX || e.touches[0].pageX;
   const diff = currentX - startX;
 
-  if (diff < -threshold) { nextSlide(); isDragging = false; }
-  else if (diff > threshold) { prevSlide(); isDragging = false; }
+  if (diff < -threshold) { nextSlide(); isDragging = false; resetAutoplay(); }
+  else if (diff > threshold) { prevSlide(); isDragging = false; resetAutoplay(); }
 }
 
 function endDrag() { isDragging = false; }
 
-function nextSlide() {
-  index = (index + 1) % slides.length;
-  updateSlides();
-}
-
-function prevSlide() {
-  index = (index - 1 + slides.length) % slides.length;
-  updateSlides();
-}
-
+/* Inicializar */
 updateSlides();
+startAutoplay();
 
 //inicio frase boda
  window.addEventListener("load", function() {

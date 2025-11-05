@@ -94,16 +94,16 @@ button { margin-top: 20px; }
 /* Carousel */
 .carousel-section {
   max-width: 900px;
-  margin: 0 auto; /* centrado */
-  perspective: 1200px; /* efecto 3D */
+  margin: 0 auto;
+  perspective: 1200px;
   text-align: center;
-  background: transparent; /* sin fondo blanco */
+  background: transparent;
 }
 
 .carousel {
   position: relative;
   height: 500px;
-  overflow: hidden; /* no mostrar otras imágenes */
+  overflow: hidden;
 }
 
 .carousel-track {
@@ -116,7 +116,7 @@ button { margin-top: 20px; }
   position: absolute;
   top: 0;
   left: 50%;
-  width: 90%;  /* imagen casi completa */
+  width: 90%;
   height: 100%;
   transform: translateX(-50%) scale(0.9);
   border-radius: 20px;
@@ -142,29 +142,30 @@ button { margin-top: 20px; }
 /* Indicadores */
 .carousel-indicators {
   position: absolute;
-  bottom: 10px;      /* un poquito más arriba del borde */
+  bottom: 15px;
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 6px;          /* espacio entre los círculos */
-  z-index: 10;       /* asegúrate que esté encima del carrusel */
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
 }
 
 .carousel-indicators button {
-  width: 8px;        /* un poco más grande para que se vea */
-  height: 8px;
-  border-radius: 50%; 
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   border: none;
   background: #ccc;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0; /* evita que se deformen */
 }
 
 .carousel-indicators button.active {
   background: #6a5b1e;
   transform: scale(1.3);
 }
-
 
 
 
