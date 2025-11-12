@@ -203,67 +203,43 @@
   <p class="tipo">No niños, por favor.</p>
 </section>
 
-
+<!-- FORMS -->
 <section class="rsvp-section" id="confirmacion">
-  <h2 class="section-title">&nbsp;</h2>
-  <p class="section-text">&nbsp;<br>&nbsp;<br>&nbsp;</p>
-
   <form class="rsvp-form" id="rsvpForm">
+    <p>&nbsp;<br> &nbsp; <br> &nbsp;</p>
+
+    <!-- Input oculto para ID de invitado -->
+    <input type="hidden" name="entry.993025194" id="idInvitadoHidden">
+
     <!-- Nombre -->
     <label for="nombre">Nombre:</label>
-    <input type="text" name="entry.692299565" id="nombre" required>
+    <input type="text" name="entry.1850873592" id="nombreforms" required>
 
     <!-- Teléfono -->
     <label for="telefono">Teléfono:</label>
-<input 
-    type="tel" 
-    name="entry.2002604468" 
-    id="telefono" 
-    required 
-    pattern="[0-9]{10}" 
-/>
-
+    <input type="tel" name="entry.1902016643" id="telefono" required pattern="[0-9]{10}" />
 
     <!-- Asistencia -->
-    <label class="question-label">¿Asistirás?</label>
-    <div class="options-inline-center">
-      <label>
-        <input type="radio" name="entry.1782443328" value="Sí"> Sí
-      </label>
-      <label>
-        <input type="radio" name="entry.1782443328" value="No"> No
-      </label>
-    </div>
+    <label>¿Asistirás?</label>
+    <label><input type="radio" name="entry.207305379" value="Sí"> Sí</label>
+    <label><input type="radio" name="entry.207305379" value="No"> No</label>
 
     <!-- Acompañantes -->
     <label for="acompanantes">Número de confirmados:</label>
     <select name="acompanantesVisible" id="acompanantes" required>
       <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
     </select>
-    <!-- Input oculto que envía el valor real a Google Forms -->
-    <input type="hidden" name="entry.987654321" id="acompanantesHidden">
-
-<!-- Input oculto de Google Forms -->
-<input type="hidden" name="entry.1874152832" id="acompanantesHidden">
-
+    <input type="hidden" name="entry.1055150468" id="acompanantesHidden">
 
     <!-- Comentarios -->
     <label for="comentarios">Comentarios:</label>
-    <textarea name="entry.1572602636" id="comentarios" rows="3"></textarea>
+    <textarea name="entry.404057514" id="comentarios" rows="3"></textarea>
 
     <button type="submit">Enviar Confirmación</button>
   </form>
 
   <p id="mensaje" style="color:green; text-align:center; margin-top:10px;"></p>
 </section>
-
-
 
 
 <!-- mesa de regalo -->
@@ -307,12 +283,10 @@
 
   <!-- Frase de boda abajo -->
 <div class="frase-boda-final">
-  <p id="frase-boda-final"></p>
+  <h2>Nos encantaría contar con tu presencia para celebrar juntos este día lleno de amor, alegría y momentos inolvidables</h2>
+  <p>TE ESPERAMOS</p>
+
 </div>
-
- <h2 class="section-title animate-on-scroll">TE ESPERAMOS</h2>
-
-
  <footer class="footer">
         <p>© 2025 MidelDigital</p>
     </footer>

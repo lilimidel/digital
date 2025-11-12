@@ -320,7 +320,7 @@ button { margin-top: 20px; }
   display: inline-block;
   margin-top: 20px;
   padding: 10px 25px;
-  background-color: #6b6b26;
+  background-color: #95765c;
   color: white;
   border-radius: 25px;
   text-decoration: none;
@@ -330,7 +330,7 @@ button { margin-top: 20px; }
 }
 
 .celebracion-btn:hover {
-  background-color: #57571e;
+  background-color: #95765ce7;
 }
 
 
@@ -393,7 +393,7 @@ button { margin-top: 20px; }
   display: inline-block;
   margin-top: 20px;
   padding: 10px 25px;
-  background-color: #6b6b26;
+  background-color: #95765c;
   color: white;
   border-radius: 25px;
   text-decoration: none;
@@ -403,7 +403,7 @@ button { margin-top: 20px; }
 }
 
 .celebracion-btnrec:hover {
-  background-color: #57571e;
+  background-color: #95765ce7;
 }
 
 
@@ -547,17 +547,27 @@ button { margin-top: 20px; }
 /*frase de boda final*/
 .frase-boda-final {
     text-align: center;
-    margin-top: 20px;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px;
+  }
+
+  .frase-boda-final h2 {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.2rem;
+  color: #5c5446;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 10px;
   }
 
   .frase-boda-final p {
-    font-family: 'Jost', sans-serif;
-    font-size: 1.3rem;
-    color: #3c3c38c5;
-    margin: 20px;
-    display: inline-block;
-    white-space: pre-line; /* respeta los saltos */
-    line-height: 1.5;
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2em;
+  text-align: center;
+  color: #95765c;
+  margin: 0 0 15px 0;
   }
 
   /* Cursor parpadeante */
@@ -911,7 +921,7 @@ button { margin-top: 20px; }
 
 /* Nombre del invitado */
 #nombre {
-  font-family: 'Great Vibes', cursive; /* fuente elegante */
+  font-family: 'Dancing Script', cursive;
   font-size: 1.8rem;
   color: #3c352a;
 }
@@ -957,7 +967,7 @@ button { margin-top: 20px; }
 .rsvp-section {
   max-width: 250px;              /* más estrecho */
   margin: 50px 30px;             /* centrado vertical y horizontal */
-  padding: 15px 12px;            /* menos padding */
+  padding: 20px 20px;            /* menos padding */
   background-image: url('./images/papel2.png');
   background-size: cover;
   background-position: center;
@@ -1023,7 +1033,7 @@ button { margin-top: 20px; }
 }
 
 .rsvp-form button {
-  background-color: #5a684f;
+  background-color: #95765c;
   color: #fff;
   padding: 7px 15px;            
   border: none;
@@ -1034,14 +1044,14 @@ button { margin-top: 20px; }
 }
 
 .rsvp-form button:hover {
-  background-color: #4f5a3f;
+  background-color: #95765cee;
 }
 
 /* Responsive: móviles */
 @media (max-width: 480px) {
   .rsvp-section {
     max-width: 90%;
-    padding: 12px 10px;
+    padding: 30px 30px;
   }
   .rsvp-form input,
   .rsvp-form select,
@@ -1408,7 +1418,8 @@ button { margin-top: 20px; }
   display: inline-block;
   margin-top: 20px;
   padding: 10px 25px;
-  background-color: #6b6b26;
+  background-color: #95765c;
+;
   color: white;
   border-radius: 25px;
   text-decoration: none;
@@ -1418,7 +1429,7 @@ button { margin-top: 20px; }
 }
 
 .button-vestimenta:hover {
-  background-color: #57571e;
+  background-color: #95765cee;
 }
 
 /* Responsivo */

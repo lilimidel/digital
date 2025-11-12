@@ -190,40 +190,6 @@ startAutoplay();
   });
 //fin frase boda
 
-//inicio frase boda final
- window.addEventListener("load", function() {
-    const texto = `Nos encantaría contar con tu presencia para celebrar juntos este día lleno de amor, alegría y momentos inolvidables`;
-
-    const elemento = document.getElementById("frase-boda-final");
-    let i = 0;
-    let escribiendo = false;
-
-    function escribir() {
-      if (i < texto.length) {
-        const caracter = texto[i] === "\n" ? "<br>" : texto[i];
-        elemento.innerHTML += caracter;
-        i++;
-        setTimeout(escribir, 45);
-      } else {
-        elemento.style.setProperty("animation", "none"); // opcional: detiene cursor
-      }
-    }
-
-    
-
-    // Observador para iniciar cuando el elemento esté visible
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !escribiendo) {
-          escribiendo = true;
-          escribir();
-        }
-      });
-    }, { threshold: 0.2 }); // empieza al estar 20% visible
-
-    observer.observe(elemento);
-  });
-//fin frase boda final
 
 //inicio titulo animado
 window.addEventListener('load', () => {
@@ -304,10 +270,12 @@ window.addEventListener('load', () => {
     const invitado = data.find(item => item.id == id);
     const nombreEl = document.getElementById("nombre");
     const personasEl = document.getElementById("personas");
-
+    const idHidden = document.getElementById("idInvitadoHidden");
+    
     if (invitado) {
       if(nombreEl) nombreEl.textContent = invitado.nombre;
       if(personasEl) personasEl.textContent = invitado.personas;
+      if (idHidden) idHidden.value = invitado.id;
 
       // Ajustar máximo de acompañantes basado en pases
       const select = document.getElementById("acompanantes");
@@ -426,30 +394,65 @@ document.addEventListener("DOMContentLoaded", () => {
 //FIN ANIMACION AL HACER SCROLL
 
 
-  // --- Enviar formulario ---
+// --- Enviar formulario ---
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("rsvpForm");
+  const mensaje = document.getElementById("mensaje");
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const asistenciaRadios = document.getElementsByName("entry.1782443328");
-    let asistencia = "";
-    for (let radio of asistenciaRadios) if (radio.checked) { asistencia = radio.value; break; }
+    // --- Referencias ---
+    const nombreInput = document.querySelector('input[name="entry.1850873592"]');
+    const telefonoInput = document.querySelector('input[name="entry.1902016643"]');
+    const comentariosInput = document.querySelector('textarea[name="entry.404057514"]');
+    const asistenciaRadios = document.getElementsByName("entry.207305379");
+    const select = document.querySelector('select[name="acompanantesVisible"]');
+    const hiddenInput = document.querySelector('input[name="entry.1055150468"]');
+    const idHidden = document.getElementById("idInvitadoHidden");
 
-    if (!nombre || !telefono || !asistencia || !select.value) {
+    // Si existe el id del invitado, se asigna
+    if (idHidden && typeof invitado !== "undefined") {
+      idHidden.value = invitado.id;
+    }
+
+    // --- Obtener valores con protección ---
+    const nombre = nombreInput?.value?.trim() || "";
+    const telefono = telefonoInput?.value?.trim() || "";
+    const comentarios = comentariosInput?.value?.trim() || "";
+
+    let asistencia = "";
+    for (let radio of asistenciaRadios) {
+      if (radio.checked) {
+        asistencia = radio.value;
+        break;
+      }
+    }
+
+    // --- Validaciones ---
+    if (!nombre || !telefono || !asistencia || !select?.value) {
       alert("Por favor llena todos los campos antes de enviar.");
       return;
     }
+
     if (!/^\d{10}$/.test(telefono)) {
       alert("Ingresa un número de teléfono válido de 10 dígitos.");
       return;
     }
 
-    hiddenInput.value = select.value;
+    // --- Convertir valor del select a texto y pasarlo al input oculto ---
+    if (hiddenInput && select) {
+      const textoSeleccionado = select.options[select.selectedIndex]?.text || select.value;
+      hiddenInput.value = textoSeleccionado;
+    }
 
-    const url = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScq5NnC41Z2084JKUXn9FKa37_SubxvQdQ22w5XWhGvWhJ3Cw/formResponse";
+    // --- URL del Google Form ---
+    const url = "https://docs.google.com/forms/u/0/d/1pTK1Thh87p9E6UVcsaZr_1oh3wtPdR8NwpokVdnoTSM/formResponse";
+
+    // --- Crear el FormData ---
     const formData = new FormData(form);
 
+    // --- Enviar ---
     fetch(url, { method: "POST", mode: "no-cors", body: formData })
       .then(() => {
         mensaje.textContent = "¡Gracias! Tu confirmación ha sido enviada.";
@@ -459,4 +462,5 @@ document.addEventListener("DOMContentLoaded", () => {
         mensaje.textContent = "Hubo un error, por favor intenta de nuevo.";
       });
   });
+});
 
