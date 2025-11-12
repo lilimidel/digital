@@ -8,6 +8,20 @@ body, html {
   background-color: #e9ebe8;
 }
 
+ /* Contenedor principal */
+    #contenidoCelular { display: none; }
+    #mensajeEscritorio { display: none; text-align: center; margin-top: 50px; font-size: 1.5rem; }
+
+    /* Solo mostrar contenido en móviles */
+    @media (max-width: 768px) {
+      #contenidoCelular { display: block; }
+    }
+
+    /* Solo mostrar mensaje en escritorio */
+    @media (min-width: 769px) {
+      #mensajeEscritorio { display: block; }
+    }
+
 /* 1️⃣ Anthony Hunter */
 @font-face {
   font-family: 'Anthony Hunter';
