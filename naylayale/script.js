@@ -271,7 +271,7 @@ window.addEventListener('load', () => {
     const nombreEl = document.getElementById("nombre");
     const personasEl = document.getElementById("personas");
     const idHidden = document.getElementById("idInvitadoHidden");
-    
+
     if (invitado) {
       if(nombreEl) nombreEl.textContent = invitado.nombre;
       if(personasEl) personasEl.textContent = invitado.personas;
@@ -463,4 +463,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+ // --- pantalla inicio inico ---
+ const pantallaInicio = document.getElementById("pantallaInicio");
+  const audio = document.getElementById("wedding-song");
 
+  pantallaInicio.addEventListener("click", () => {
+    // Activar música
+    audio.play();
+
+    // Efecto fade out
+    pantallaInicio.style.opacity = 0;
+
+    // Esperar a que termine el fade out y ocultar el div
+    setTimeout(() => {
+      pantallaInicio.style.display = "none";
+    }, 1000); // coincide con transition: opacity 1s
+  });
+  
+ // --- pantalla inicio fin ---
